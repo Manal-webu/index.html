@@ -1,0 +1,478 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+     <meta charset="UTF-8">
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+     <title>La Belle Gourmet</title>
+     <style>
+ 
+         body {
+            font-family: 'Courier New', monospace;
+             margin: 0;
+             padding: 0;
+             background-color: #f8f8f8;
+             color: #333;
+         }
+         header {
+            height: 100px;
+			background-size:100% 100%
+            color: black;
+            padding: 20px;
+            text-align: center;
+         }
+         nav {
+             margin: 20px 0;
+         }
+         nav a {
+            margin: 0 20px;
+            color: black;
+            text-decoration: none ;
+            font-weight: bold;
+			transition: color 0.3s;
+         }
+         nav a:hover {
+            text-decoration: underline;
+         }
+         .hero {
+		    background-image:url("https://storage.googleapis.com/a1aa/image/d3eb2f40-5743-4319-a5e6-9f82a99613fe.jpeg");
+			width:1550px;
+	       	height: 450px;
+             background-size: 100% 100%;
+			 border-radius: 8px;
+             display: flexbox;
+             align-items: center;
+             justify-content: center;
+             opacity:100% ;
+             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+         }
+         .hero h1 {
+             font-size: 3em;
+			
+         }
+         .content {
+             padding: 20px;
+             text-align: center;
+         }
+         .image-section {
+             margin: 20px 0;
+         }
+         .image-section img {
+             width: 100%;
+             max-width: 600px;
+             border-radius: 8px;
+         }
+		    .horizontal-images {
+             display: flex; /* Use flexbox to arrange images horizontally */
+             justify-content: underline; /* Center the images */
+             gap: 2px; /* Space between images */
+             margin: 20px 0; /* Margin for the section */
+         }
+         .horizontal-images div {
+              text-align: center; 
+         }
+         .horizontal-images img {
+             width: 200px; 
+             height: auto; 
+             border-radius: 8px; 
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+	 		width:30%
+         }
+	     .container {
+       display: flex;
+   	  justify-content: center;
+       align-items: center;
+       flex-wrap: wrap;
+     }
+     .image-container {
+       width: 30%;
+       padding: 5px;
+     }
+     .image-container img {
+       width: 100%;
+       height: auto;
+	   border-radius: 8px; /* Optional: rounded corners */	
+    }
+     .text {
+       text-align: center;
+       padding: 3px;
+     }
+        .menu-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .menu-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .menu-header h1 {
+            margin: 0;
+            font-size: 0.5em;
+            color: #d9534f;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat( auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .menu-item {
+            background: #fdfdfd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .menu-item:hover {
+            transform: scale(1.03);
+        }
+        .menu-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .menu-content {
+            padding: 15px;
+        }
+        .menu-title {
+            font-size: 1.5em;
+            margin: 0;
+            color: #333;
+        }
+        .menu-price {
+            color: #d9534f;
+            font-size: 1.2em;
+            margin: 5px 0;
+        }
+        .menu-ingredients {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+		.Drinks-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .Drinks-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .Drinks-header h1 {
+            margin: 0;
+            font-size: 0.5em;
+            color: #d9534f;
+        }
+        .Drinks-grid {
+            display: grid ;
+            grid-template-columns: no-repeat( auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .Drinks-item {
+            background: #fdfdfd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .Drinks-item:hover {
+            transform: scale(1.03);
+        }
+        .Drinks-content {
+            padding: 15px;
+        }
+        .Drinks-title {
+		
+            font-size: 1.5em;
+            margin: 0;
+            color: #333;
+        }
+        .Drinks-price {
+		text-align: right;
+            color: #d9534f;
+            font-size: 1.2em;
+            margin: 5px 0;
+        }
+        .Drinks-ingredients {
+		text-align: left;
+            font-size: 0.9em;
+            color: #666;
+        }
+		 .reservation {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: white;
+		   text-align:left;
+
+        }
+        .reservation input, .reservation select {
+            margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+		    text-align:left;
+
+        }
+        .reservation button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .reservation button:hover {
+            background-color: #218838;
+        }
+     label {
+            display: block;
+            margin: 10px 0 5px;
+			text-align:left;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+			text-align:left;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+         footer {
+             background-color: #8B0000; /* Dark Red */
+             color: white;
+             text-align: center;
+             padding: 10px;
+             position: relative;
+             bottom: 0;
+             width: 100%;
+         }
+     </style>
+</head> 
+<body> 
+     <header>
+	  <div class="h1">
+         <h1>La Belle Gourmet</h1>
+		  </div>
+         <nav>
+             <a href="#menu">Menu</a>
+             <a href="#drinks">Drinks</a>
+             <a href="#reserve">Reserve</a>
+             <a href="#feedbacks">Feedbacks</a>
+         </nav>
+     </header>
+  
+     <div class="hero">
+         
+     </div>
+ 
+     <div class="content">
+         <h1>Our Specialties</h1>
+         <p>We offer a variety of delicious dishes made from the freshest ingredients.</p>
+		 
+<div class="container"> 
+     <div class="image-container">
+       <img src="https://storage.googleapis.com/a1aa/image/a0a33de3-2f08-4951-a465-95151ce12901.jpeg" alt="Image of customers dining">
+       <div class="text">
+         <h2>Customer Satisfaction</h2>
+       </div>
+    </div> 
+ 
+     <div class="image-container">
+       <img src="https://storage.googleapis.com/a1aa/image/9f5621c8-5efe-443d-9191-2fef84d0b06d.jpeg" alt="Image of steak dinner">
+       <div class="text">
+         <h2>A taste you'll remember</h2>
+       </div>
+     </div>
+ 
+     <div class="image-container">
+       <img src="https://storage.googleapis.com/a1aa/image/a4f9e509-e5e1-44c8-8f1a-57835689071d.jpeg" alt="Image of restaurant interior">
+       <div class="text">
+	    <h2>Cozy Ambiance</h2>
+	   
+       </div>
+     </div>
+   </div>
+
+        <h1 id="menu">Menu</h1>
+         <p>Explore our diverse menu featuring appetizers, main courses, and desserts.</p>
+         <h2>Our Main Courses</h2>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="https://hips.hearstapps.com/del.h-cdn.co/assets/18/11/1520957651-grilled-salmon-vertical.jpg?crop=1.0xw%3A1xh%3Bcenter%2Ctop&resize=768%3A%2A" alt="Grilled Salmon" class="menu-image">
+                <div class="menu-content">
+                    <h3 class="menu-title">Grilled Salmon</h3>
+                    <p class="menu-price">$18.99</p>
+                    <p class="menu-ingredients">Salmon, Lemon Butter Sauce, Asparagus, Herbs</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://www.platingsandpairings.com/wp-content/uploads/2021/04/steak-diane-recipe-22-scaled.jpg" alt="Steak Diane" class="menu-image">
+                <div class="menu-content">
+                    <h3 class="menu-title">Steak Diane</h3>
+                    <p class="menu-price">$25.99</p>
+                    <p class="menu-ingredients">Beef Tenderloin, Creamy Mushroom Sauce, Garlic</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.1iCgHefoNG1SPHux9Cj2QQHaJl&w=474&h=474&c=7" alt="Chicken Parmesan" class="menu-image">
+                <div class="menu-content">
+                    <h3 class="menu-title">Chicken Parmesan</h3>
+                    <p class="menu-price">$15.99</p>
+                    <p class="menu-ingredients">Breaded Chicken, Marinara Sauce, Mozzarella</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.fZd3RIhJSCDnmGMdgvZIHgHaLH&w=474&h=474&c=7" alt="Shrimp Scampi" class="menu-image">
+                <div class="menu-content">
+                    <h3 class="menu-title">Shrimp Scampi</h3>
+                    <p class="menu-price">$19.99</p>
+                    <p class="menu-ingredients">Shrimp, Garlic Butter Sauce, Linguine</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.fGb1h5fqhkVTDNlC6J0e-AHaHa&w=474&h=474&c=7" alt="Vegetarian Lasagna" class="menu-image">
+                <div class="menu-content">
+                    <h3 class="menu-title">Vegetarian Lasagna</h3>
+                    <p class="menu-price">$14.99</p>
+                    <p class="menu-ingredients">Zucchini, Eggplant, Ricotta, Tomato Sauce</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://www.grillseeker.com/wp-content/uploads/2022/06/sauced-pork-ribs-on-a-baoking-sheet.jpg" alt="BBQ Ribs" class="menu-image">
+                <div class="menu-content">
+                    <h3 class="menu-title">BBQ Ribs</h3>
+                    <p class="menu-price">$22.99</p>
+                    <p class="menu-ingredients">Pork Ribs, BBQ Sauce, Coleslaw, Fries</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+	<header>
+	
+        <h1 id="drinks">Drinks</h1>
+		</header>
+		
+     <div class="Drinks-grid">
+        <div class="Drinks-item">
+		<div class="Drinks-content">
+            <h3 class="Drinks-title">Coffee</h3>
+            <p class ="Drinks-ingredients">Coffee, Sugar, Milk</p>
+            <p class="Drinks-price">$3.99</p>
+        </div>
+        <div class="Drinks-item">
+		<div class="Drinks-content">
+            <h3 class="Drinks-title">Tea</h3>
+            <p class="Drinks-ingredients" >Tea leaves, Lemon, Honey</p>
+            <p class="Drinks-price">$2.49</p>
+        </div>
+        <div class="Drinks-item">
+		<div class="Drinks-content">
+            <h3 class="Drinks-title">Orange Juice</h3>
+            <p class ="Drinks-ingredients">Fresh oranges</p>
+            <p class="Drinks-price">$4.99</p>
+        </div>
+        <div class="Drinks-item">
+		<div class="Drinks-content">
+            <h3 class="Drinks-title">Lemonade</h3>
+            <p class ="Drinks-ingredients">Lemons, Sugar, Water</p>
+            <p class="Drinks-price">$3.49</p>
+        </div>
+        <div class="Drinks-item">
+		<div class="Drinks-content">
+            <h3 class="Drinks-title">Mint Mojito</h3>
+            <p class ="Drinks-ingredients">Mint, Lime, Soda, Sugar</p>
+            <p class="Drinks-price">$5.99</p>
+        </div>
+        <div class="Drinks-item">
+		<div class="Drinks-content">
+            <h3 class="Drinks-title">Milkshake</h3>
+            <p class ="Drinks-ingredients">Milk, Ice Cream, Sugar</p>
+            <p class="Drinks-price">$4.49</p>
+        </div>
+    </div>
+	 </div>
+	  </div>
+	   </div>
+	  
+        <header> <h1 id="reserve">Reserve</h1>
+         <p>Make a reservation to ensure you have a table ready for your visit.</p>
+ </header>
+ <div class="reservation" id="Reserve">
+    <h2>Reserve a Table</h2>
+    <form action="submit_reservation.php" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required>
+
+        <label for="guests">Number of Guests:</label>
+        <select id="guests" name="guests" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+
+        <button type="submit">Reserve Now</button>
+    </form>
+</div>
+
+ 
+     <header>    <h1 id="feedbacks">Feedbacks</h1>
+         <p>We value your feedback! Let us know about your experience.</p>
+		 </header>
+<div class="container">
+    <form action="submit_feedback.php" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" rows="5" required></textarea>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+</div>
+     </div>
+
+     <footer>
+	   <p>Contact us at: info@restaurant.com</p>
+       <p>&copy; 2023 LaBelleGourmet. All rights reserved.</p>
+     </footer>
+ 
+ </body>
+ </html>
